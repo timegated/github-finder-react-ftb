@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../Layout/Spinner';
+import Repos from '../Repos/Repo';
 import PropTypes from 'prop-types';
 
 class User extends Component {
@@ -21,7 +22,6 @@ class User extends Component {
         const {
             name,
             avatar_url,
-            url,
             location,
             company,
             bio,
@@ -35,7 +35,7 @@ class User extends Component {
             hireable
         } = this.props.user;
 
-        const { loading } = this.props;
+        const { loading, repos } = this.props;
         if (loading) {
             return (<Spinner />)
         } else {
@@ -81,6 +81,7 @@ class User extends Component {
                         <div className="badge badge-danger">Public Repos: {public_repos}</div>
                         <div className="badge badge-dark">Public Gists: {public_gists}</div>
                     </div>
+                    <Repos repos={repos} />
            </Fragment>
         )
         }

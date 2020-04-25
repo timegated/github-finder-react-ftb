@@ -15,6 +15,7 @@ class Search extends Component {
 
     onSubmit = (e) => {
         const { text } = this.state;
+        console.log('Text in Search Component', text)
         if (text === '') {
             this.props.setAlert('Text field cannot be empty', 'danger');
         } else {

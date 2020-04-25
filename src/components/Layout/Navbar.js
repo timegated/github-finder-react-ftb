@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function Navbar ({icon, title}) {
+const Navbar =  ({icon, title}) => {
     return (
         <div className="navbar bg-primary">
             <h1>
