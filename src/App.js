@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import Navbar from './layout/Navbar/Navbar';
 import Users from './components/Users/Users';
 import Search from './components/Users/Search';
+import Alert from './layout/Alert/Alert';
 import axios from 'axios';
 import './App.css';
 
 class App extends Component {
   state = {
     users: [],
-    loading: true
-  }
+    loading: true,
+    alert: null
+  };
 
   async componentDidMount() {
     const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
@@ -26,14 +28,32 @@ class App extends Component {
     });
   }
 
+  clearUsers = () => {
+    this.setState({users: [], loading: false})
+  }
+
+  setAlert = (message, type) => {
+    this.setState({ alert: { message: message, type: type } })
+    setTimeout(() => {
+      this.setState({alert: null})
+    }, 3000);
+  }
+
   render() {
-    console.log(this.state)
+    const { users, loading, alert } = this.state;
+
     return (
     <div className="App">
         <Navbar />
         <div className="container">
-          <Search searchUsers={this.searchUsers} />
-              <Users loading={this.state.loading} users={this.state.users} />
+          <Alert alert={alert} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={users.length > 0 ? true : false}
+            setAlert={this.setAlert}
+          />
+              <Users loading={loading} users={users} />
         </div>
     </div>
   );
