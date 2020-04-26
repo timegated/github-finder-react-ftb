@@ -7,25 +7,20 @@ import User from './components/Users/User';
 import Alert from './components/Layout/Alert';
 import About from './components/pages/About';
 import './App.css';
+
+// React Context API
 import GithubState from './context/github/GithubState';
+import AlertState from './context/alert/AlertState';
 
 const App = () => {
-  // let [alert, setAlert] = useState(null); 
-  // setAlert = (message, type) => {
-  //   setAlert(message, type);
-
-  //   setTimeout(() => {
-  //     setAlert(null)
-  //   }, 3000);
-  // };
-
   return (
     <GithubState>
-       <Router>
+      <AlertState>
+    <Router>
         <div className="App">
         <Navbar />
         <div className="container">
-            <Alert alert={alert} />
+            <Alert />
             <Switch>
               <Route path='/' exact render={props => (
                 <Fragment>
@@ -42,6 +37,7 @@ const App = () => {
         </div>
     </div>
       </Router> 
+      </AlertState>
     </GithubState>
      
   );
