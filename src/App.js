@@ -5,6 +5,7 @@ import User from './components/Users/User';
 import Alert from './components/Layout/Alert';
 import About from './components/pages/About';
 import Home from './components/pages/Home';
+import NotFound from './components/pages/NotFound';
 import './App.css';
 
 // React Context API
@@ -21,9 +22,10 @@ const App = () => {
         <div className="container">
             <Alert />
             <Switch>
-                <Route path='/' exact component={Home} />
+              <Route path='/' exact component={Home} />
               <Route exact path="/about" component={About} />
-              <Route exact path="/user/:login" component={User}/>
+              <Route exact path="/user/:login" component={User} />
+              <Route component={NotFound} />
             </Switch>
         </div>
     </div>
