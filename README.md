@@ -12,4 +12,4 @@
 * [X] Remove all class components and implement hooks for managing state and lifecycle methods
 * [X] Use Context API to "pass" state around to components that need it
 
-## <a href="https://github-repo-finder2020.netlify.app" target="_blank">Live App</a>
+## <a href="https://github-repo-finder2020.netlify.app">Live App</a>
