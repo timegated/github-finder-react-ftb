@@ -10,8 +10,6 @@ import axios from 'axios';
 import './App.css';
 import GithubState from './context/github/GithubState';
 
-console.log('[GithubState in App.js]',GithubState)
-
 const App = () => {
 
   const [users, setUsers] = useState([]);
@@ -35,10 +33,6 @@ const App = () => {
     setLoading(false)
   };
 
-  const clearUsers = () => {
-    setUsers([])
-    setLoading(false)
-  };
 
   // setAlert = (message, type) => {
   //   setAlert(message, type);
@@ -59,7 +53,6 @@ const App = () => {
               <Route path='/' exact render={props => (
                 <Fragment>
                   <Search
-                    clearUsers={clearUsers}
                     showClear={users.length > 0 ? true : false}
                     // setAlert={setAlert}
                   />
